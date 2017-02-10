@@ -17,6 +17,5 @@
 		echo "<img src='". $_SESSION['upload_file'] . "'id='photo'>";
 
 	include "../Views/home.php"
-	include 'cute_galerie.php';
 
 ?>
