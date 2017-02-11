@@ -74,6 +74,7 @@ function whichFilter(ctx)
     var src = loadImg("../Filters/penguin.png", ctx);
     document.getElementById('cb3').checked = false;
   }
+  document.getElementById("startbutton").style.visibility="hidden";
   return src;
 }
 
@@ -82,6 +83,7 @@ function whichFilter(ctx)
     var img = whichFilter(ctx);
     if (img)
     {
+      canvas.style.display = "initial";
       ctx.globalAlpha = 2;
       ctx.drawImage(video, 0, 0);
       var data = canvas.toDataURL('image/png');
@@ -141,5 +143,6 @@ function selectOnlyThis(id) {
         document.getElementById("cb" + i).checked = false;
     }
     document.getElementById(id).checked = true;
+    document.getElementById("startbutton").style.visibility="initial";
 
 }

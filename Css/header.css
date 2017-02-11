@@ -44,3 +44,11 @@ body {
     background-color: #333e52;
     text-decoration: none;
 }
+
+#startbutton {
+    visibility: hidden;
+}
+
+#canvas {
+    display: none;
+}

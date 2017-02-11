@@ -28,7 +28,7 @@
 					<td><input type="checkbox" id="cb3" onclick="selectOnlyThis(this.id)">Filter 3</option></td>
 				</form>
 				</select>
-				<input id = "filter_button" type="submit" VALUE="filter"/>
+				<input id = "startbutton" type="submit" VALUE="filter"/>
 			</table>
 			</div>
 		</div>
