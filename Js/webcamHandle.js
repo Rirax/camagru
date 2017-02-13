@@ -146,3 +146,25 @@ function selectOnlyThis(id) {
     document.getElementById("startbutton").style.visibility="initial";
 
 }
+
+function deletePic(id) {
+  var pic = document.getElementById(id).id;
+  var xhr = getHttpRequest();
+  var post = new FormData();
+  post.append('img', pic);
+  xhr.open('POST', '../Controlers/delete_pic.php', true);
+  xhr.setRequestHeader('X-Requested-With', 'xmlhttprequest');
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState === 4) {
+      if (xhr.status === 200) {
+        // window.alert(xhr.responseText); // contient le résultat de la page
+      }
+      else {
+        window.alert("This picture does not exist");
+      }
+    }
+  }
+  xhr.send(post);
+  var tmp = document.getElementById(id);
+  tmp.src = "../Filters/frog.png";
+}

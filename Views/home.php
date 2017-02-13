@@ -16,6 +16,7 @@
 		<canvas id="canvas"></canvas>
 			<div id= "bouton">
 			<button id="startbutton">Take a picure!</button>
+			<!--<img src="$pics[$i]['link']" onclick="deletepic(id)" "/><br>;-->
 				
 			<form action="../Controlers/upload.php" method="post" enctype="multipart/form-data">
 			    Select image to upload:
