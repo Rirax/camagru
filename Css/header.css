@@ -52,3 +52,7 @@ body {
 #canvas {
     display: none;
 }
+
+.picture {
+    width: 320px;
+}

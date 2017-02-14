@@ -6,7 +6,7 @@
       canvas       = document.querySelector('#canvas'),
       photo        = document.querySelector('#photo'),
       startbutton  = document.querySelector('#startbutton'),
-      width = 620,
+      width = 520,
       height = 0;
 
   navigator.getMedia = ( navigator.getUserMedia ||
@@ -161,5 +161,6 @@ function deletePic(id) {
   xhr.send(post);
   var tmp = document.getElementById(id);
   tmp.src = "../Filters/deleted.png";
+  tmp.style.width = '200px';
 
 }

@@ -19,7 +19,7 @@
 	if ($i > 0) {
 		while (--$i >= 0)
 		{
-			echo "<img id='".$pic[$i]['pic_id']."' src='".$pic[$i]['link']."' onclick='deletePic(this.id)'/><br>";
+			echo "<img id='".$pic[$i]['pic_id']."' src='".$pic[$i]['link']."' onclick='deletePic(this.id)' class='picture' /><br>";
 		}
 	}
 
