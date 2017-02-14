@@ -1,10 +1,28 @@
 <?php 
 	session_start();
 
+	require '../Config/setup.php';
+
 	if (!$_SESSION['auth'] || !isset($_SESSION['auth']))
+	{
 		header('Location: ../Views/sign_in.php?redirect=unsigned');
+	}
+
+	$req = $db->prepare("SELECT * FROM gallery WHERE user_id = ?");
+	$req->execute(array($_SESSION['auth']['user_id']));
+	$pic = $req->fetchAll();
+
+	$i = count($pic);
 
 	require '../Views/header.php';
+
+	if ($i > 0) {
+		while (--$i >= 0)
+		{
+			echo "<img id='".$pic[$i]['pic_id']."' src='".$pic[$i]['link']."' onclick='deletePic(this.id)'/><br>";
+		}
+	}
+
  ?>
 
 		<div id="content">
@@ -16,7 +34,6 @@
 		<canvas id="canvas"></canvas>
 			<div id= "bouton">
 			<button id="startbutton">Take a picure!</button>
-			<!--<img src="$pics[$i]['link']" onclick="deletepic(id)" "/><br>;-->
 				
 			<form action="../Controlers/upload.php" method="post" enctype="multipart/form-data">
 			    Select image to upload:

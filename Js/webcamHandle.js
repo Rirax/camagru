@@ -44,17 +44,6 @@
     }
   }, false);
 
-function loadImg(src, ctx) {
-    var ret = new Image();
-
-    ret.onload = function(){
-      ctx.globalAlpha = 1;
-      ctx.drawImage(ret, 0, 50);
-    };
-    ret.src = src;
-    return ret;
-  }
-
 
 function whichFilter(ctx)
 {
@@ -63,47 +52,52 @@ function whichFilter(ctx)
   var cb3 = document.getElementById('cb3')
 
   if (cb1.checked) {
-    var src = loadImg("../Filters/fokof.png", ctx);
+    var src = '../Filters/fokof.png';
     document.getElementById('cb1').checked = false;
   }
   if (cb2.checked) {
-    var src = loadImg("../Filters/frog.png", ctx);  
+    var src = "../Filters/frog.png";  
     document.getElementById('cb2').checked = false;
   }
   if (cb3.checked) {
-    var src = loadImg("../Filters/penguin.png", ctx);
+    var src = "../Filters/penguin.png";
     document.getElementById('cb3').checked = false;
   }
   document.getElementById("startbutton").style.visibility="hidden";
   return src;
 }
 
-  function takepicture() {
-    var ctx = canvas.getContext('2d');
-    var img = whichFilter(ctx);
+ function takepicture() {
+    var img = whichFilter();
     if (img)
     {
-      canvas.style.display = "initial";
-      ctx.globalAlpha = 2;
+      var ctx = canvas.getContext('2d');
       ctx.drawImage(video, 0, 0);
-      var data = canvas.toDataURL('image/png');
-      canvas.setAttribute('src', data);
-      var xhr = getHttpRequest()
-      var post = new FormData()
-      post.append('img', data);
-      xhr.open('POST', '../Controlers/layer.php', true);
-      xhr.setRequestHeader('X-Requested-With', 'xmlhttprequest');
-      xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4) {
-          if (xhr.status === 200) {
-            //window.alert(xhr.responseText); // contient le résultat de la page
-          }
-          else {
-            window.alert("wrong link");
+      ctx.globalAlpha = 1;
+      var flt = new Image();
+      flt.src = img;
+      flt.onload = function(){
+        ctx.drawImage(flt, 0, 50);
+        var data = canvas.toDataURL('image/png');
+        canvas.setAttribute('src', data);
+        canvas.style.display="initial"
+        var xhr = getHttpRequest();
+        var post = new FormData();
+        post.append('img', data);
+        xhr.open('POST', '../Controlers/layer.php', true);
+        xhr.setRequestHeader('X-Requested-With', 'xmlhttprequest');
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+              // window.alert(xhr.responseText); // contient le résultat de la page
+            }
+            else {
+              window.alert("This filter does not exist");
+            }
           }
         }
-      }
-      xhr.send(post);
+        xhr.send(post);
+      };
     }
     else {
       alert('You must choose a filter');
@@ -166,5 +160,6 @@ function deletePic(id) {
   }
   xhr.send(post);
   var tmp = document.getElementById(id);
-  tmp.src = "../Filters/frog.png";
+  tmp.src = "../Filters/deleted.png";
+
 }
