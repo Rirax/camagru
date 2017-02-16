@@ -29,6 +29,8 @@
 	
 	while ((--$i - (($page - 1) * $post_per_page)) >= 0 && $tmp < 5) {
 		echo "<img src='".$pics[$i - (($page - 1) * $post_per_page)]['link']."'/><br>";
+		echo "<i id='$pic[$i]['pic_id']' class='fa fa-heart' aria-hidden='true' onclick='likeImg(this.id)' style='font-size: 28px;color:red;'></i>";
+		echo "<i id='$pic[$i]['pic_id']' class='fa fa-heart-o' aria-hidden='true' onclick='likeImg(this.id)' ></i>";
 		$tmp++;
 	}
 
@@ -39,4 +41,4 @@
 			}
 	}
 	
- ?>
+?>

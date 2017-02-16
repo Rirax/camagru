@@ -28,6 +28,7 @@
 	 <head>
 	 	<meta charset="utf-8" />
 		<script src="../Js/script.js"></script>
+		<script src="https://use.fontawesome.com/223539d286.js"></script>
 		<link rel="stylesheet" href="../Css/header.css" />
 	 	<title>Camagru</title>
 	 </head>
