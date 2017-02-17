@@ -29,9 +29,19 @@
 	
 	while ((--$i - (($page - 1) * $post_per_page)) >= 0 && $tmp < 5) {
 		echo "<img src='".$pics[$i - (($page - 1) * $post_per_page)]['link']."'/><br>";
-		echo "<i id='$pic[$i]['pic_id']' class='fa fa-heart' aria-hidden='true' onclick='likeImg(this.id)' style='font-size: 28px;color:red;'></i>";
-		echo "<i id='$pic[$i]['pic_id']' class='fa fa-heart-o' aria-hidden='true' onclick='likeImg(this.id)' ></i>";
-		$tmp++;
+
+		//echo $pics[$i]['pic_id'];
+		//$tmp = $pic[$i]['pic_id'];
+		if ($ok)
+		{
+			echo "<i id='".$pics[$i]['pic_id']."' class='fa fa-heart' aria-hidden='true' onclick='likeImg(this.id)' style='font-size: 28px;color:red;'></i>";
+		}
+		else
+		{
+			echo "<i id='".$pics[$i]['image_id']."' class='fa fa-heart-o' aria-hidden='true' onclick='likeImg(this.id)' style='font-size: 28px;@media screen and (min-width: 200px) and (max-width: 1024px){font-size: 57px;}'></i>";
+		}
+			$tmp++;
+			//pic id à remplacer par image_id
 	}
 
 	for ($i = 1; $i <= $page_max; $i++) { 

@@ -13,6 +13,7 @@ try {
 	$db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_NAMED);
 	SetupDatabase($db, $DB_NAME);
 	SetupGallery($db, $DB_NAME);
+	SetupLike($db, $DB_NAME);
 }
 
 catch(PDOException $e) {	
@@ -45,7 +46,7 @@ function SetupGallery($db, $DB_NAME) {
 }
 
 function SetupLike($db, $DB_NAME) {
-	$db->exec("USE {DB_NAME};");
+	$db->exec("USE {$DB_NAME};");
 	$db->exec("CREATE TABLE IF NOT EXISTS likes (
 		id INT NOT NULL PRIMARY KEY AUTO_INCREMENT , 
 		user_id INT NOT NULL , 

@@ -19,7 +19,7 @@ if($_POST['like'])
 ?>
 
 <?php 
-
+/*
 echo "<img id='i{$value->id}' class='img_size' src='"."{$value->link}"."''>";
 		echo "<div class='comment{$value->id} comment'>";
 		getComments($db, $value->id);
@@ -28,7 +28,7 @@ echo "<img id='i{$value->id}' class='img_size' src='"."{$value->link}"."''>";
 		print_r("<div class='interaction'>");
 		if($on)
 		{
-			echo "<i id='{$value->id}' class='fa fa-heart heart_s' aria-hidden='true' onclick='likeImg(this.id)' onclick='likeImg(this.id)' style='font-size: 28px;color:red;'></i>";
+			echo "<i id='{$value->id}' class='fa fa-heart heart_s' aria-hidden='true' onclick='likeImg(this.id)' style='font-size: 28px;color:red;'></i>";
 		}
 		else
 		{
