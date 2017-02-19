@@ -175,7 +175,7 @@ function likeImg(id){
     var post = new FormData();
     post.append('like', 'true');
     post.append('image_id', id);
-    xhr.open('POST', 'http://localhost:8080/camagru/jaime.php', true);
+    xhr.open('POST', 'http://localhost:8080/camagru/Controlers/jaime.php', true);
     xhr.setRequestHeader('X-Requested-With', 'xmlhttprequest');
     xhr.onreadystatechange = function () {
      if (xhr.readyState === 4) 
@@ -200,7 +200,7 @@ function likeImg(id){
    var posty = new FormData();
    posty.append('like', 'false');
    posty.append('image_id', id);
-   xhr.open('POST', 'http://localhost:8080/camagru/jaime.php', true);
+   xhr.open('POST', 'http://localhost:8080/camagru/Controlers/jaime.php', true);
    xhr.setRequestHeader('X-Requested-With', 'xmlhttprequest');
    xhr.onreadystatechange = function () {
     if (xhr.readyState === 4) 

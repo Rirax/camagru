@@ -26,23 +26,27 @@
 	}
 
 	require '../Views/header.php';
-	
-	while ((--$i - (($page - 1) * $post_per_page)) >= 0 && $tmp < 5) {
-		echo "<img src='".$pics[$i - (($page - 1) * $post_per_page)]['link']."'/><br>";
 
-		//echo $pics[$i]['pic_id'];
-		//$tmp = $pic[$i]['pic_id'];
-		if ($ok)
-		{
-			echo "<i id='".$pics[$i]['pic_id']."' class='fa fa-heart' aria-hidden='true' onclick='likeImg(this.id)' style='font-size: 28px;color:red;'></i>";
+	foreach ($pics as $key => $value) {
+		$req2 = $db->prepare('SELECT id FROM likes WHERE image_id = ? AND user_id = ?');
+		$req2->execute(array($value['pic_id'], $_SESSION['auth']['user_id']));
+		$ok = $req2->fetch();
+	
+			while ((--$i - (($page - 1) * $post_per_page)) >= 0 && $tmp < 5) {
+				echo "<img src='".$pics[$i - (($page - 1) * $post_per_page)]['link']."'/><br>";
+
+					if ($ok)
+					{
+						echo "<i id='{$value->id}' class='fa fa-heart' aria-hidden='true' onclick='likeImg(this.id)' style='font-size: 28px;color:red;'></i>";
+					}
+					else
+					{
+						echo "<i id='{$value->id}' class='fa fa-heart-o' aria-hidden='true' onclick='likeImg(this.id)' style='font-size: 28px;@media screen and (min-width: 200px) and (max-width: 1024px){font-size: 57px;}'></i>";
+					}
+				}
+				$tmp++;
+					//pic id à remplacer par image_id
 		}
-		else
-		{
-			echo "<i id='".$pics[$i]['image_id']."' class='fa fa-heart-o' aria-hidden='true' onclick='likeImg(this.id)' style='font-size: 28px;@media screen and (min-width: 200px) and (max-width: 1024px){font-size: 57px;}'></i>";
-		}
-			$tmp++;
-			//pic id à remplacer par image_id
-	}
 
 	for ($i = 1; $i <= $page_max; $i++) { 
 			echo "<a href='http://localhost:8080/camagru/Views/gallery.php?p=".$i."'>Page ".$i."</a>";
