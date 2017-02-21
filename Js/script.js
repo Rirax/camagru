@@ -33,7 +33,6 @@ function likeImg(id){
 
   if (val) //like
   {
-    console.log("TEST");
     var xhr = getHttpRequest();
     var post = new FormData();
     post.append('like', 'true');
