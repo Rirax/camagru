@@ -83,3 +83,41 @@ function likeImg(id){
       heart.style.color='#9b9b9b';
     }
 }
+
+function comment(id){
+    var key = window.event.keyCode;
+    //console.log(key)
+    if (key == 13)
+    {
+      var image_id = 'c' + id;
+      var comment = document.getElementById(image_id) ;
+      var xhr = getHttpRequest();
+      var com = new FormData();
+      com.append('comment', comment.value);
+      com.append('image_id', id);
+      xhr.open('POST', 'http://localhost:8080/camagru/Controlers/commentaire.php', true);
+      xhr.setRequestHeader('X-Requested-With', 'xmlhttprequest');
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) 
+        {
+          if (xhr.status === 200) 
+          {
+            var user = xhr.responseText;
+            console.log(user);
+            var title = document.createElement('h4');
+            var txt = document.createElement('p');
+            var tmp = comment.value;
+            title.innerHTML = user;
+            txt.innerHTML = tmp;
+            comment.value = "";
+          } 
+          else 
+          {
+            console.log("wrong link");
+          }
+        }
+      }
+      xhr.send(com);
+      location.reload();
+    }
+  }

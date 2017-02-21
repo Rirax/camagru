@@ -28,10 +28,10 @@
 	require '../Views/header.php';
 
 	foreach ($pics as $key => $value) {
-		$req2 = $db->prepare('SELECT id FROM likes WHERE image_id = ? AND user_id = ?');
+		$req2 = $db->prepare('SELECT * FROM likes WHERE image_id = ? AND user_id = ?');
 		$req2->execute(array($value['pic_id'], $_SESSION['auth']['user_id']));
 		$ok = $req2->fetch();
-		var_dump($ok);
+		//var_dump($ok);
 	
 			while ((--$i - (($page - 1) * $post_per_page)) >= 0 && $tmp < 5) {
 				echo "<img src='".$pics[$i - (($page - 1) * $post_per_page)]['link']."'/><br>";
