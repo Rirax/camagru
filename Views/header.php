@@ -17,6 +17,13 @@
 		else
 			echo '<a href="../Views/sign_in.php?redirect=unsigned">Home</a>';
 	}
+	function findUser($db, $id)
+	{
+		$req = $db->prepare('SELECT username FROM users WHERE user_id = ?');
+		$req->execute(array($user_id));
+		$user = $req->fetch();
+		return $user['username'];
+	}
 
 	if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
 		die($content);
@@ -28,7 +35,6 @@
 	 <head>
 	 	<meta charset="utf-8" />
 		<script src="../Js/script.js"></script>
-		<!-- <script src="../Js/webcamHandle.js"></script> -->
 		<script src="https://use.fontawesome.com/223539d286.js"></script>
 		<link rel="stylesheet" href="../Css/header.css" />
 	 	<title>Camagru</title>

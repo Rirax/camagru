@@ -27,6 +27,23 @@
 
 	require '../Views/header.php';
 
+	function getcomments($db, $image_id)
+	{
+		$req = $db->prepare('SELECT user_id, text_comment FROM comments WHERE image_id = ? ORDER BY id DESC');
+		$req->execute(array($image_id));
+		$var = $req->fetchAll(PDO::FETCH_CLASS);
+		if ($var)
+		{
+			foreach ($var as $key => $value) {
+				$user = findUser($db, $value->user_id);
+				$user = htmlentities($user);
+				$comment =htmlentities($value->text_comment);
+				//echo "<h4 class='com_user'>{$user}</h4><p class='com_text'> {$comment}</p>";
+				echo "<br>";
+			}
+		}
+	}
+
 	foreach ($pics as $key => $value) {
 		$req2 = $db->prepare('SELECT * FROM likes WHERE image_id = ? AND user_id = ?');
 		$req2->execute(array($value['pic_id'], $_SESSION['auth']['user_id']));
@@ -34,7 +51,9 @@
 		while ((--$i - (($page - 1) * $post_per_page)) >= 0 && $tmp < 5) 
 		{
 				echo "<img src='".$pics[$i - (($page - 1) * $post_per_page)]['link']."'/><br>";
-				
+				echo "<div class='comment{$value['pic_id']} comment'>";
+				getcomments($db, $value['pic_id']);
+				print_r("<div class='jaime'>");
 					if ($ok)
 					{
 						echo "<i id='{$value['pic_id']}' class='fa fa-heart' aria-hidden='true' onclick='likeImg(this.id)' style='font-size: 28px;color:red;'></i>";
@@ -43,7 +62,10 @@
 					{	
 						echo "<i id='{$value['pic_id']}' class='fa fa-heart-o' aria-hidden='true' onclick='likeImg(this.id)' style='font-size: 28px;@media screen and (min-width: 200px) and (max-width: 1024px){font-size: 57px;}'></i>";
 					}
+					echo "<input id='c{$value['pic_id']}' class='comment' type='text' placeholder='Add comment...' autocomplete='off' onkeypress='comment({$value['pic_id']})'>";
+					print_r('</div>');
 				}
+				print_r('</div>');
 			$tmp++;
 	}
 

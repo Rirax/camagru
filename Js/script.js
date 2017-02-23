@@ -86,7 +86,7 @@ function likeImg(id){
 
 function comment(id){
     var key = window.event.keyCode;
-    //console.log(key)
+    //13 = enter
     if (key == 13)
     {
       var image_id = 'c' + id;
@@ -118,6 +118,6 @@ function comment(id){
         }
       }
       xhr.send(com);
-      location.reload();
+     // location.reload();
     }
   }

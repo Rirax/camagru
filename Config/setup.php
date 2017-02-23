@@ -14,6 +14,7 @@ try {
 	SetupDatabase($db, $DB_NAME);
 	SetupGallery($db, $DB_NAME);
 	SetupLike($db, $DB_NAME);
+	SetupComment($db, $DB_NAME);
 }
 
 catch(PDOException $e) {	
@@ -54,13 +55,13 @@ function SetupLike($db, $DB_NAME) {
 }
 
 function SetupComment($db, $DB_NAME) {
-	$db->exec("USE {DB_NAME};");
+	$db->exec("USE {$DB_NAME};");
 	$db->exec("CREATE TABLE IF NOT EXISTS comments ( 
 		id INT NOT NULL PRIMARY KEY AUTO_INCREMENT , 
 		user_id INT NOT NULL, 
 		image_id INT NOT NULL, 
 		text_comment VARCHAR(500) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL);");
-	$db->exec("USE {$db_name}");
+	$db->exec("USE {$DB_NAME}");
 }
 
 ?>
