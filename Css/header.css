@@ -66,8 +66,19 @@ body {
 }
 
 .comment {
+    color: black;
     text-align: left;
     padding-left: 10px;
     padding-right: 30px;
-    word-wrap: break-word;
+}
+
+.commentaire {
+    display: inline;
+
+}
+
+.com {
+    display: inline;
+    font-family: monospace;
+    font-weight: bold;
 }

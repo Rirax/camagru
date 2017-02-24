@@ -12,7 +12,7 @@ if($_POST['comment'] && $_POST['image_id'] && isset($_SESSION['auth']))
 	$req->execute(array($_POST['image_id']));
 	$var = $req->fetch();
 //regler ici LIGNE 12
-	if ($_SESSION['id'] != $var['user_id'])
+	if ($_SESSION['auth']['user_id'] != $var['user_id'])
 	{
 		$req = $db->prepare('SELECT username, email FROM users WHERE id = ?');
 		$req->execute(array($var['user_id']));
