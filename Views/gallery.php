@@ -44,30 +44,27 @@
 		}
 	}
 
-		$req2 = $db->prepare('SELECT * FROM likes WHERE image_id = ? AND user_id = ?');
-		$req2->execute(array($value['pic_id'], $_SESSION['auth']['user_id']));
-		$ok = $req2->fetch();
-		
 		while ((--$i - (($page - 1) * $post_per_page)) >= 0 && $tmp < 5) 
 		{
-			echo "<div class='comment{$pics[$i - (($page - 1) * $post_per_page)]['pic_id']} comment'>";
-				getcomments($db, $pics[$i - (($page - 1) * $post_per_page)]['pic_id']);
-
-				// print_r($value['pic_id']);
-				echo ("</div>");
+				$req2 = $db->prepare('SELECT * FROM likes WHERE image_id = ? AND user_id = ?');
+				$req2->execute(array($pics[$i - (($page - 1) * $post_per_page)]['pic_id'], $_SESSION['auth']['user_id']));
+				$ok = $req2->fetch();
 				echo "<img src='".$pics[$i - (($page - 1) * $post_per_page)]['link']."'/><br>";
 
-				
-				print_r("<div class='jaime'>");
+				echo "<div class='comment{$pics[$i - (($page - 1) * $post_per_page)]['pic_id']} comment'>";
+				getcomments($db, $pics[$i - (($page - 1) * $post_per_page)]['pic_id']);
+				echo ("</div>");
+				echo "<input id='c{$pics[$i - (($page - 1) * $post_per_page)]['pic_id']}' class='comment' type='text' placeholder='Add a comment...' autocomplete='off' onkeypress='comment({$pics[$i - (($page - 1) * $post_per_page)]['pic_id']})'>";
 					if ($ok)
 					{
 						echo "<i id='{$pics[$i - (($page - 1) * $post_per_page)]['pic_id']}' class='fa fa-heart' aria-hidden='true' onclick='likeImg(this.id)' style='font-size: 28px;color:red;'></i>";
 					}
 					else
 					{
-						echo "<i id='{$pics[$i - (($page - 1) * $post_per_page)]['pic_id']}' class='fa fa-heart-o' aria-hidden='true' onclick='likeImg(this.id)' style='font-size: 28px;@media screen and (min-width: 200px) and (max-width: 1024px){font-size: 57px;}'></i>";
+						echo "<i id='{$pics[$i - (($page - 1) * $post_per_page)]['pic_id']}' class='fa fa-heart-o' aria-hidden='true' onclick='likeImg(this.id)' style='font-size: 28px;@media screen and (min-width: 200px) and (max-width: 1024px){font-size: 58px;}'></i>";
 					}
-					echo "<input id='c{$pics[$i - (($page - 1) * $post_per_page)]['pic_id']}' class='comment' type='text' placeholder='Add a comment...' autocomplete='off' onkeypress='comment({$value['pic_id']})'>";
+				print_r("<div class='jaime'>");
+					
 				$tmp++;
 		}
 				print_r('</div>');
