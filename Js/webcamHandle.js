@@ -73,17 +73,19 @@ function whichFilter(ctx)
     {
       var ctx = canvas.getContext('2d');
       ctx.drawImage(video, 0, 0);
+      var data = canvas.toDataURL('image/png');
       ctx.globalAlpha = 1;
       var flt = new Image();
       flt.src = img;
       flt.onload = function(){
         ctx.drawImage(flt, 0, 50);
-        var data = canvas.toDataURL('image/png');
+        
         canvas.setAttribute('src', data);
         canvas.style.display="initial"
         var xhr = getHttpRequest();
         var post = new FormData();
         post.append('img', data);
+        post.append('flt', img);
         xhr.open('POST', '../Controlers/layer.php', true);
         xhr.setRequestHeader('X-Requested-With', 'xmlhttprequest');
         xhr.onreadystatechange = function () {
