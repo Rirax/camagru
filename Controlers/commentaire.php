@@ -30,12 +30,16 @@ function sendEmailComment($name, $email, $user, $comment)
 
 if($_POST['comment'] && $_POST['image_id'] && isset($_SESSION['auth']))
 {
-	$req = $db->prepare('INSERT INTO comments SET user_id = ?, image_id = ?, text_comment = ?');
-	$req->execute(array($_SESSION['auth']['user_id'], $_POST['image_id'], $_POST['comment']));
-	$req = $db->prepare('SELECT user_id FROM gallery WHERE pic_id = ?');
-	$req->execute(array($_POST['image_id']));
-	$var = $req->fetch();
-
+	$com = $_POST['comment'];
+	$com = trim($com);
+	if (strlen($com) <= 250 && strlen($com) > 0)
+	{
+		$req = $db->prepare('INSERT INTO comments SET user_id = ?, image_id = ?, text_comment = ?');
+		$req->execute(array($_SESSION['auth']['user_id'], $_POST['image_id'], $_POST['comment']));
+		$req = $db->prepare('SELECT user_id FROM gallery WHERE pic_id = ?');
+		$req->execute(array($_POST['image_id']));
+		$var = $req->fetch();
+	}
 	if ($_SESSION['auth']['user_id'] != $var['user_id'])
 	{
 		$req = $db->prepare('SELECT username, email FROM users WHERE id = ?');
