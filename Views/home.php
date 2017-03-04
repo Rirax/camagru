@@ -28,14 +28,13 @@
 		<div id="content">
 		<div id="rendu_final">
 			<video class="video"id="video"></video>
-			<!-- <div id="filter_prev" class = "filter1"></div> -->
 		</div>
 
 		<canvas id="canvas"></canvas>
 			<div id= "bouton">
 			<button id="startbutton">Take a picure!</button>
 				
-			<form action="../Controlers/layer.php" method="post" enctype="multipart/form-data">
+			<form action="../Controlers/layer.php" method="post" enctype="multipart/form-data" >
 			    Select image to upload:
 			    <input type="file" name="fileToUpload" id="fileToUpload">
 			    <input type="submit" value="Upload Image" name="submit">
