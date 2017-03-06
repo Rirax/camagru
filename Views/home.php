@@ -8,20 +8,7 @@
 		header('Location: ../Views/sign_in.php?redirect=unsigned');
 	}
 
-	$req = $db->prepare("SELECT * FROM gallery WHERE user_id = ?");
-	$req->execute(array($_SESSION['auth']['user_id']));
-	$pic = $req->fetchAll();
-
-	$i = count($pic);
-
-	require '../Views/header.php';
-
-	if ($i > 0) {
-		while (--$i >= 0)
-		{
-			echo "<img id='".$pic[$i]['pic_id']."' src='".$pic[$i]['link']."' onclick='deletePic(this.id)' class='picture' /><br>";
-		}
-	}
+	
 
  ?>
 
@@ -55,4 +42,21 @@
 		<script src="../Js/script.js"></script>
 
 
-<?php require '../Views/footer.php' ?>
+<?php 
+
+$req = $db->prepare("SELECT * FROM gallery WHERE user_id = ?");
+	$req->execute(array($_SESSION['auth']['user_id']));
+	$pic = $req->fetchAll();
+
+	$i = count($pic);
+
+	require '../Views/header.php';
+
+	if ($i > 0) {
+		while (--$i >= 0)
+		{
+			echo "<img id='".$pic[$i]['pic_id']."' src='".$pic[$i]['link']."' onclick='deletePic(this.id)' class='picture' /><br>";
+		}
+	}
+
+	require '../Views/footer.php' ?>
