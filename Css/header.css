@@ -1,14 +1,14 @@
 
 ul.header {
     z-index: 3;
-    /*position: fixed;*/
+    position: fixed;
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
     background-color: #333e52;
     top: 0;
-    font-family: arial;
+    font-family: Courier, monospace;
     width: 100%;
 }
 
@@ -47,6 +47,11 @@ body {
 }
 
 #startbutton {
+    display:block;
+    width:125px;
+    line-height:40px;
+    text-align:center;
+    vertical-align:middle;
     visibility: hidden;
 }
 
@@ -55,6 +60,7 @@ body {
 }
 
 .picture {
+    bottom: 0;
     width: 320px;
 }
 
@@ -82,7 +88,3 @@ body {
     font-family: monospace;
     font-weight: bold;
 }
-
-/* {
-    font-family: 'Trebuchet MS', Helvetica, sans-serif;
-}*/

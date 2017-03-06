@@ -98,6 +98,7 @@ function whichFilter(ctx)
             }
           }
         }
+        location.reload();
         xhr.send(post);
       };
     }
