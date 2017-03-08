@@ -11,10 +11,10 @@
 	
 
  ?>
-
+ 		<link rel="stylesheet" href="../Css/home.css">
 		<div id="content">
 		<div id="rendu_final">
-			<video class="video"id="video"></video>
+			<video class="video" id="video"></video>
 		</div>
 
 		<canvas id="canvas"></canvas>
@@ -38,7 +38,6 @@
 		</div>
 
 		<script src="../Js/webcamHandle.js"></script>
-		<!-- <script type="text/javascript" src= "../Js/filter_preview.js"></script> -->
 		<script src="../Js/script.js"></script>
 
 
