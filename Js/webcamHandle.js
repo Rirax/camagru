@@ -166,4 +166,3 @@ function deletePic(id) {
   tmp.style.width = '200px';
 
 }
-

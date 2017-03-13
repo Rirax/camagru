@@ -8,8 +8,6 @@
 		header('Location: ../Views/sign_in.php?redirect=unsigned');
 	}
 
-	
-
  ?>
  		<link rel="stylesheet" href="../Css/home.css">
 		<div id="content">
@@ -19,28 +17,22 @@
 
 		<canvas id="canvas"></canvas>
 			<div id= "bouton">
-			<button id="startbutton">Take a picure!</button>
-				
-			<form action="../Controlers/layer.php" method="post" enctype="multipart/form-data" >
-			    Select image to upload:
-			    <input type="file" name="fileToUpload" id="fileToUpload">
-			    <input type="submit" value="Upload Image" name="submit">
-			</form>
+			<button id="startbutton">Take a picure!</button>	
+			    <button id="fileToUpload" onclick="document.getElementById('file').click();">Select image to upload:</button>
+					</div>
+						<form  method="post" enctype="multipart/form-data">
+						    <input type="file" name="fileToUpload" id="file"/>
+						</form>
 			<table>
 					<td><input type="checkbox" id="cb1" onclick="selectOnlyThis(this.id)">Filter 1</option></td>
 					<td><input type="checkbox" id="cb2" onclick="selectOnlyThis(this.id)">Filter 2</option></td>
 					<td><input type="checkbox" id="cb3" onclick="selectOnlyThis(this.id)">Filter 3</option></td>
-				</form>
-				</select>
-				<input id = "startbutton" type="submit" VALUE="filter"/>
 			</table>
 			</div>
 		</div>
 
 		<script src="../Js/webcamHandle.js"></script>
 		<script src="../Js/script.js"></script>
-
-
 <?php 
 
 $req = $db->prepare("SELECT * FROM gallery WHERE user_id = ?");

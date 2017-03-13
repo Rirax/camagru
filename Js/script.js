@@ -160,10 +160,10 @@ function filterUpload(file, name, data) {
   }
 }
 
-document.getElementById('submit').addEventListener('click', function(ev){
+document.getElementById('fileToUpload').addEventListener('click', function(ev){
   var file = this.files;
+  console.log(file);
   var reader = new FileReader();
-  
   reader.addEventListener('load', function() {
     if (!file[1]) {
       if (file[0].size > 2097152) {
