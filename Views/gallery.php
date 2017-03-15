@@ -32,6 +32,8 @@
 		$req = $db->prepare('SELECT user_id, text_comment FROM comments WHERE image_id = ? ORDER BY id DESC');
 		$req->execute(array($image_id));
 		$var = $req->fetchAll(PDO::FETCH_CLASS);
+		if ($_SESSION['auth'] || isset($_SESSION['auth']))
+		{
 		if ($var)
 		{
 			foreach ($var as $key => $value) {
@@ -42,6 +44,7 @@
 				echo "<br>";
 			}
 		}
+	}
 	}
 
 		while ((--$i - (($page - 1) * $post_per_page)) >= 0 && $tmp < 5) 

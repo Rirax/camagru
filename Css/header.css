@@ -1,8 +1,8 @@
-
 ul.header {
-    z-index: 3;
     position: fixed;
     list-style-type: none;
+    display: inline-block;
+    margin: auto;
     margin: 0;
     padding: 0;
     overflow: hidden;
@@ -10,6 +10,7 @@ ul.header {
     top: 0;
     font-family: Courier, monospace;
     width: 100%;
+    z-index: 3;
 }
 
 body {
@@ -21,6 +22,7 @@ body {
 }
 
 .content {
+    margin: auto;
     padding-top: 7%;
     position: absolute;
     width: 100%;
@@ -36,6 +38,12 @@ body {
     float: right;
 }
 
+.header {
+    position: fixed;
+    vertical-align: middle;
+    margin: 0 auto;
+}
+
 .eheader a {
     display: block;
     color: white;
@@ -45,14 +53,12 @@ body {
     background-color: #333e52;
     text-decoration: none;
 }
+.header a {
+    font-size: 2.3em;
+}
 
-#startbutton {
-    display:block;
-    width:125px;
-    line-height:40px;
-    text-align:center;
-    vertical-align:middle;
-    visibility: hidden;
+.flash {
+    font-size: x-large;
 }
 
 #canvas {
@@ -87,4 +93,8 @@ body {
     display: inline;
     font-family: monospace;
     font-weight: bold;
+}
+
+#account, #forgot {
+    margin-top: 15%;
 }

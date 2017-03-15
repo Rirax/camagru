@@ -11,6 +11,7 @@ if ($_POST['img'] && $_POST['flt'] && $_SESSION['auth'])
 		$target_file = $target_dir . basename($_FILES["data"]["name"]);
     if ($_FILES['data']) {
 	    $imageFileType = pathinfo($target_file, PATHINFO_EXTENSION);
+	    var_dump($imageFileType);
         $check = getimagesize($_FILES["data"]["tmp_name"]);
         if($check !== false) {
             $uploadOk = 1;
@@ -26,6 +27,7 @@ if ($_POST['img'] && $_POST['flt'] && $_SESSION['auth'])
 	    if ($uploadOk == 0) {
 			http_response_code(400);
 			echo json_encode($_SESSION['flash']);
+			echo "error";
 			die();
 			header('Location: ../Views/home.php');
 	    }

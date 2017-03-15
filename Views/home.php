@@ -14,14 +14,13 @@
 		<div id="rendu_final">
 			<video class="video" id="video"></video>
 		</div>
-
 		<canvas id="canvas"></canvas>
 			<div id= "bouton">
 			<button id="startbutton">Take a picure!</button>	
 			    <button id="fileToUpload" onclick="document.getElementById('file').click();">Select image to upload:</button>
 					</div>
 						<form  method="post" enctype="multipart/form-data">
-						    <input type="file" name="fileToUpload" id="file"/>
+						    <input type="file" name="filterUpload" id="file"/>
 						</form>
 			<table>
 					<td><input type="checkbox" id="cb1" onclick="selectOnlyThis(this.id)">Filter 1</option></td>
@@ -33,6 +32,7 @@
 
 		<script src="../Js/webcamHandle.js"></script>
 		<script src="../Js/script.js"></script>
+		<script src="../Js/fileupload.js"></script>
 <?php 
 
 $req = $db->prepare("SELECT * FROM gallery WHERE user_id = ?");
