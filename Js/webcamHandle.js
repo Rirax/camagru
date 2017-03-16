@@ -47,6 +47,7 @@
 
 function whichFilter(ctx)
 {
+  
   var cb1 = document.getElementById('cb1')
   var cb2 = document.getElementById('cb2')
   var cb3 = document.getElementById('cb3')
@@ -140,6 +141,7 @@ function selectOnlyThis(id) {
     }
     document.getElementById(id).checked = true;
     document.getElementById("startbutton").style.visibility="initial";
+    document.getElementById("fileToUpload").style.visibility="initial";
 
 }
 

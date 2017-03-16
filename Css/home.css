@@ -1,5 +1,7 @@
 .body{
 	margin: auto;
+	vertical-align: center;
+	text-align: center;
 }
 
 #video {
@@ -11,11 +13,18 @@
 {
 	width: 900px;
 	margin: auto;
+	text-align: center;
 }
 
-#startbutton {
-    display:block;
-    width:125px;
+#startbutton, #fileToUpload {
+
+	background-color: #00264d;
+	font-size: 17px;
+	font-family: Blippo, fantasy;
+	color: white;
+	margin: auto;
+    display: inline-block;
+    width: 220px;
     line-height:40px;
     text-align:center;
     vertical-align:middle;
@@ -28,22 +37,21 @@
 	z-index: 0;
 }
 
-#fileToUpload{
-	visibility: hidden;
-}
-
 #canvas
 {
 	position: relative;
 	margin-top: 250px;
-	margin-left: 290px;
+	margin-left: auto;
 }
 
 #bouton
 {
 	display: inline-block;
 	margin: 5px auto;
+	text-align: center;
+	vertical-align: center;
 }
+
 
 .flt {
 	width: 200px;
@@ -68,15 +76,24 @@
 	color: #757575; text-decoration: none;
 }
 
+#file {
+	margin: auto;
+	visibility: hidden;
+	text-align: center;
+	vertical-align: center;
+}
+
 .photo
 {
 	margin-left: 251px;
 }
-@media (max-width: 1280px) {
+/*@media (max-width: 1280px) {
 	#rendu_final
 	{
+		text-align: center;
+		vertical-align: center;
 		float: left;
-		margin-left: 14%;
+		margin-left: auto;
 	}
 	.overall
 	{
@@ -94,6 +111,8 @@
 	}
 	#bouton
 	{
+		vertical-align: center;
+		text-align: center;
 		margin-right: 35%;
 	}
 }

@@ -22,11 +22,11 @@
 						<form  method="post" enctype="multipart/form-data">
 						    <input type="file" name="filterUpload" id="file"/>
 						</form>
-			<table>
+			<td>
 					<td><input type="checkbox" id="cb1" onclick="selectOnlyThis(this.id)">Filter 1</option></td>
 					<td><input type="checkbox" id="cb2" onclick="selectOnlyThis(this.id)">Filter 2</option></td>
 					<td><input type="checkbox" id="cb3" onclick="selectOnlyThis(this.id)">Filter 3</option></td>
-			</table>
+			</td>
 			</div>
 		</div>
 
