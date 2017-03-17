@@ -77,5 +77,6 @@ function whichFilter(ctx)
     document.getElementById('cb3').checked = false;
   }
   document.getElementById("startbutton").style.visibility="hidden";
+  document.getElementById("fileToUpload").style.visibility="hidden";
   return src;
 }

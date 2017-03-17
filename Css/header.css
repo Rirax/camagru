@@ -24,9 +24,7 @@ body {
 .content {
     margin: auto;
     padding-top: 7%;
-    position: absolute;
-    width: 100%;
-    height: 100%;
+    
 }
 
 .eheader {
@@ -62,12 +60,18 @@ body {
 }
 
 #canvas {
+    margin: 5% auto;
     display: none;
+}
+.contenu {
+    margin: auto;
+    width: 620px;
 }
 
 .picture {
     bottom: 0;
-    width: 320px;
+    width: 400px;
+    margin: 5px auto;
 }
 
 .jaime {
@@ -80,8 +84,8 @@ body {
 .comment {
     color: black;
     text-align: left;
-    padding-left: 10px;
-    padding-right: 30px;
+    padding-left: 5%;
+    padding-right: 10%;
 }
 
 .commentaire {

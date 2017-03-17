@@ -32,8 +32,6 @@
 		$req = $db->prepare('SELECT user_id, text_comment FROM comments WHERE image_id = ? ORDER BY id DESC');
 		$req->execute(array($image_id));
 		$var = $req->fetchAll(PDO::FETCH_CLASS);
-		if ($_SESSION['auth'] || isset($_SESSION['auth']))
-		{
 		if ($var)
 		{
 			foreach ($var as $key => $value) {
@@ -45,27 +43,30 @@
 			}
 		}
 	}
-	}
 
 		while ((--$i - (($page - 1) * $post_per_page)) >= 0 && $tmp < 5) 
 		{
 				$req2 = $db->prepare('SELECT * FROM likes WHERE image_id = ? AND user_id = ?');
 				$req2->execute(array($pics[$i - (($page - 1) * $post_per_page)]['pic_id'], $_SESSION['auth']['user_id']));
 				$ok = $req2->fetch();
+				print_r("<div class='contenu'>");
 				echo "<img src='".$pics[$i - (($page - 1) * $post_per_page)]['link']."'/><br>";
 
 				echo "<div class='comment{$pics[$i - (($page - 1) * $post_per_page)]['pic_id']} comment'>";
 				getcomments($db, $pics[$i - (($page - 1) * $post_per_page)]['pic_id']);
 				echo ("</div>");
-				echo "<input id='c{$pics[$i - (($page - 1) * $post_per_page)]['pic_id']}' class='comment' type='text' placeholder='Add a comment...' autocomplete='off' onkeypress='comment({$pics[$i - (($page - 1) * $post_per_page)]['pic_id']})'>";
-					if ($ok)
-					{
-						echo "<i id='{$pics[$i - (($page - 1) * $post_per_page)]['pic_id']}' class='fa fa-heart' aria-hidden='true' onclick='likeImg(this.id)' style='font-size: 28px;color:red;'></i>";
-					}
-					else
-					{
-						echo "<i id='{$pics[$i - (($page - 1) * $post_per_page)]['pic_id']}' class='fa fa-heart-o' aria-hidden='true' onclick='likeImg(this.id)' style='font-size: 28px;@media screen and (min-width: 200px) and (max-width: 1024px){font-size: 58px;}'></i>";
-					}
+				if (isset($_SESSION['auth'])) {
+					echo "<input id='c{$pics[$i - (($page - 1) * $post_per_page)]['pic_id']}' class='comment' type='text' placeholder='Add a comment...' autocomplete='off' onkeypress='comment({$pics[$i - (($page - 1) * $post_per_page)]['pic_id']})'>";
+						if ($ok)
+						{
+							echo "<i id='{$pics[$i - (($page - 1) * $post_per_page)]['pic_id']}' class='fa fa-heart' aria-hidden='true' onclick='likeImg(this.id)' style='font-size: 28px;color:red;'></i>";
+						}
+						else
+						{
+							echo "<i id='{$pics[$i - (($page - 1) * $post_per_page)]['pic_id']}' class='fa fa-heart-o' aria-hidden='true' onclick='likeImg(this.id)' style='font-size: 28px;@media screen and (min-width: 200px) and (max-width: 1024px){font-size: 58px;}'></i>";
+						}
+				}
+				print_r("</div>");
 				print_r("<div class='jaime'>");
 					
 				$tmp++;
