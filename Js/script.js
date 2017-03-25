@@ -120,6 +120,6 @@ function comment(id){
         }
       }
       xhr.send(com);
-     location.reload();
+     //location.reload();
     }
   }
