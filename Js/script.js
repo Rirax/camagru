@@ -109,8 +109,6 @@ function comment(id){
             var tmp = comment.value;
             title.innerHTML = user;
             txt.innerHTML = tmp;
-            console.log(txt.innerHTML);
-            console.log(title.innerHTML);
             comment.value = "";
           } 
           else 

@@ -34,6 +34,7 @@
  <html>
 	 <head>
 	 	<meta charset="utf-8" />
+	 	<link rel="shortcut icon" href="">
 		<script src="../Js/script.js"></script>
 		<script src="https://use.fontawesome.com/223539d286.js"></script>
 		<link rel="stylesheet" href="../Css/header.css" />

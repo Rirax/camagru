@@ -9,6 +9,7 @@
 	}
 
  ?>
+ 		<intercept-url pattern="/favicon.ico" access="ROLE_ANONYMOUS" />
  		<link rel="stylesheet" href="../Css/home.css">
 		<div id="content">
 		<div id="rendu_final">
